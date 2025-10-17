@@ -3,8 +3,8 @@ package com.yuanyu.picturebackend.manager.upload;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
-import com.yuanyu.picturebackend.exception.ErrorCode;
-import com.yuanyu.picturebackend.exception.ThrowUtils;
+import com.yuanyu.picture.infrastructure.exception.ErrorCode;
+import com.yuanyu.picture.infrastructure.exception.ThrowUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

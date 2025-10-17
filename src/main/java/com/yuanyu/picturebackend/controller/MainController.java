@@ -1,7 +1,7 @@
 package com.yuanyu.picturebackend.controller;
 
-import com.yuanyu.picturebackend.common.BaseResponse;
-import com.yuanyu.picturebackend.common.ResultUtils;
+import com.yuanyu.picture.infrastructure.common.BaseResponse;
+import com.yuanyu.picture.infrastructure.common.ResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

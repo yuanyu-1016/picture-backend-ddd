@@ -1,8 +1,8 @@
 package com.yuanyu.picturebackend.manager.upload;
 
 import cn.hutool.core.io.FileUtil;
-import com.yuanyu.picturebackend.exception.ErrorCode;
-import com.yuanyu.picturebackend.exception.ThrowUtils;
+import com.yuanyu.picture.infrastructure.exception.ErrorCode;
+import com.yuanyu.picture.infrastructure.exception.ThrowUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

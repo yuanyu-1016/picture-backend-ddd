@@ -1,8 +1,8 @@
 package com.yuanyu.picturebackend.manager.auth;
 
-import com.yuanyu.picturebackend.model.entity.Picture;
-import com.yuanyu.picturebackend.model.entity.Space;
-import com.yuanyu.picturebackend.model.entity.SpaceUser;
+import com.yuanyu.picture.domain.picture.entity.Picture;
+import com.yuanyu.picture.domain.space.entity.Space;
+import com.yuanyu.picture.domain.space.entity.SpaceUser;
 import lombok.Data;
 
 /**
