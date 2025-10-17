@@ -11,7 +11,7 @@ import com.yuanyu.picture.infrastructure.exception.ErrorCode;
 import com.yuanyu.picture.infrastructure.exception.ThrowUtils;
 import com.yuanyu.picture.interfaces.assembler.SpaceAssembler;
 import com.yuanyu.picture.interfaces.dto.space.*;
-import com.yuanyu.picturebackend.manager.auth.SpaceUserAuthManager;
+import com.yuanyu.picture.shared.auth.SpaceUserAuthManager;
 import com.yuanyu.picture.domain.space.entity.Space;
 import com.yuanyu.picture.domain.user.entity.User;
 import com.yuanyu.picture.domain.space.valueobject.SpaceLevelEnum;
@@ -19,7 +19,6 @@ import com.yuanyu.picture.interfaces.vo.space.SpaceVO;
 import com.yuanyu.picture.application.service.SpaceApplicationService;
 import com.yuanyu.picture.application.service.UserApplicationService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication(exclude = { ShardingSphereAutoConfiguration.class })
 @EnableAsync
-@MapperScan("com.yuanyu.picturebackend.mapper")
+@MapperScan("com.yuanyu.picture.infrastructure.manager")
 @EnableAspectJAutoProxy(exposeProxy = true)
 public class PictureBackendApplication {
 

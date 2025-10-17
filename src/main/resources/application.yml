@@ -56,7 +56,7 @@ spring:
             type: CLASS_BASED
             props:
               strategy: standard
-              algorithmClassName: com.yuanyu.picturebackend.manager.sharding.PictureShardingAlgorithm
+              algorithmClassName: com.yuanyu.picture.shared.sharding.PictureShardingAlgorithm
     props:
       sql-show: true
 
@@ -81,7 +81,7 @@ knife4j:
       default:
         api-rule: package
         api-rule-resources:
-          - com.yuanyu.picturebackend.controller
+          - com.yuanyu.picture.interfaces.controller
 
 #logging:
 #  level:
