@@ -12,7 +12,7 @@
 [![Issues](https://img.shields.io/github/issues/yuanyu-1016/picture-backend-ddd?style=for-the-badge&color=red)](https://github.com/yuanyu-1016/picture-backend-ddd/issues)
 [![License](https://img.shields.io/github/license/yuanyu-1016/picture-backend-ddd?style=for-the-badge&color=blue)](https://github.com/yuanyu-1016/picture-backend-ddd/blob/master/LICENSE)
 
-[描述](#-描述) • [安装](#-安装) • [使用](#-使用) • [支持](#-支持) • [贡献](#-贡献) • [作者](#-作者) • [认证](#-认证)
+[描述](#-描述) • [核心功能](#-核心功能) • [目录结构](#-目录结构) • [安装](#-安装) • [使用](#-使用) • [支持](#-支持) • [贡献](#-贡献) • [作者](#-作者)
 
 </div>
 
@@ -20,16 +20,46 @@
 
 ## 📝 描述
 
-**Picture Backend DDD** 是一个现代化的企业级图片管理系统后端项目。本项目深度实践了 **领域驱动设计 (Domain-Driven Design, DDD)** 架构思想，摒弃了传统 MVC 架构中业务逻辑臃肿、扩展性差的痛点。
+**Picture Backend DDD** 是一个现代化的企业级图片管理系统的后端项目。
 
-通过严格划分领域层、应用层、基础设施层与接口层，将核心的图片处理、存储与管理逻辑收敛于充血模型中。该架构不仅保证了系统的高内聚与低耦合，还大幅提升了代码的可读性与后期维护的敏捷性，非常适合应对复杂多变的图片资产管理业务场景。
+本项目深度实践了 **领域驱动设计 (Domain-Driven Design, DDD)** 架构思想，摒弃了传统 MVC 架构中业务逻辑臃肿、扩展性差的痛点。通过严格划分领域层、应用层、基础设施层与接口层，将核心的图片处理、存储与管理逻辑收敛于充血模型中。该架构不仅保证了系统的高内聚与低耦合，还大幅提升了代码的可读性与后期维护的敏捷性，非常适合应对复杂多变的图片资产管理业务场景。
 
-### ✨ 核心特性
+> **🔗 配套前端项目**
+> 本项目的前后端完全分离。如果您正在寻找该系统的用户交互界面与前端源码，请访问前端独立仓库：
+> 👉 **[yuanyu-1016/picture-frontend](https://github.com/yuanyu-1016/picture-frontend)**
 
-- **🚀 标准 DDD 落地**：清晰的防腐层 (ACL) 与仓储模式 (Repository)，隔离底层技术细节。
-- **🧩 纯粹的技术栈**：100% 采用 Java 语言开发，基于 Maven 进行标准化构建。
-- **🛡️ 稳定与高扩展**：模块化设计，支持快速接入多种对象存储服务 (OSS) 及图片处理中间件。
-- **📖 规范的代码结构**：遵循企业级 Java 开发规范，适合作为 DDD 学习与落地的参考范例。
+---
+
+## 🎯 核心功能
+
+本项目不仅是一次架构实践，更提供了一套完整的图片管理底层能力：
+
+- **🖼️ 图片生命周期管理**：支持图片的批量上传、格式校验、检索、更新及软删除，并统一管理图片元数据（如尺寸、体积、标签等）。
+- **☁️ 云端对象存储集成**：通过策略模式与基础设施层防腐，无缝对接第三方对象存储服务（如 Aliyun OSS, Tencent COS, MinIO 等）。
+- **🔐 用户与权限隔离**：提供基础的用户认证机制，确保图片资产的安全性与数据隔离。
+- **⚡ 高性能与扩展能力**：支持接入 Redis 进行热点数据缓存，大幅优化高频图片检索的响应速度。
+- **🏗️ 纯粹的 DDD 落地**：业务逻辑与技术细节完全解耦，提供高内聚的充血领域模型，为二次开发提供绝佳的基础模板。
+
+---
+
+## 📂 目录结构
+
+本项目严格遵循领域驱动设计 (DDD) 的四层架构规范，使得代码职责清晰、易于测试与重构：
+
+```text
+picture-backend-ddd/
+├── src/main/java/com/yuanyu/picture/
+│   ├── api/            # 接口层 (User Interface): 负责向外提供 RESTful API，处理 HTTP 请求与响应
+│   ├── application/    # 应用层 (Application): 负责业务用例的编排与调度，控制事务，不包含核心业务逻辑
+│   ├── domain/         # 领域层 (Domain): 核心层，包含聚合根、实体、值对象、领域服务及仓储(Repository)接口
+│   ├── infrastructure/ # 基础设施层 (Infrastructure): 负责数据库访问(持久化)、缓存、OSS对接等具体技术细节的实现
+│   └── PictureApplication.java # Spring Boot 启动类
+├── src/main/resources/
+│   ├── application.yml # 全局配置文件 (数据库、OSS、Redis等环境配置)
+│   └── mapper/         # MyBatis / MyBatis-Plus Mapper XML 文件
+├── sql/                # 数据库初始化脚本与表结构设计
+└── pom.xml             # Maven 依赖与构建配置
+```
 
 ---
 
@@ -39,13 +69,13 @@
 
 - **JDK**: 1.8 或更高版本 (推荐 JDK 11 / 17)
 - **Maven**: 3.6.x 或更高版本
-- **数据库**: MySQL 8.0+ (如需配置缓存可自备 Redis)
+- **数据库**: MySQL 8.0+ 
 
 ### 获取项目
 
 1. 克隆本仓库到本地环境：
    ```bash
-   git clone https://github.com/yuanyu-1016/picture-backend-ddd.git
+   git clone [https://github.com/yuanyu-1016/picture-backend-ddd.git](https://github.com/yuanyu-1016/picture-backend-ddd.git)
    ```
 
 2. 进入项目目录：
@@ -63,19 +93,19 @@
 ## 🚀 使用
 
 1. **环境配置**：
-   在 `src/main/resources` 目录下，找到并修改 `application.yml` (或 `application.properties`)，配置您的数据库连接、OSS 密钥及其他必要参数。
+   在 `src/main/resources` 目录下，找到并修改 `application.yml`，配置您的 MySQL 数据库连接、OSS 密钥及其他必要参数。
 
 2. **数据库初始化**：
    执行 `sql` 目录下提供的建表脚本，初始化系统的基础数据结构。
 
 3. **启动服务**：
-   找到系统的主启动类（通常位于应用层或启动模块下），执行 `main` 方法，或者通过以下命令启动：
+   找到系统的主启动类 `PictureApplication`，执行 `main` 方法，或者通过以下命令启动：
    ```bash
    mvn spring-boot:run
    ```
 
 4. **API 调试**：
-   服务启动后，可以通过 Postman 或自带的 Swagger/Knife4j 接口文档直接调试图片上传、检索、分类管理等核心功能。
+   服务启动后，可以通过 Postman 或自带的 API 文档（如配置了 Swagger/Knife4j）直接调试图片上传、检索等核心接口。
 
 ---
 
@@ -108,7 +138,7 @@
 **何元玉 (@yuanyu-1016)**
 
 - **GitHub**: [https://github.com/yuanyu-1016](https://github.com/yuanyu-1016)
-- **专注领域**: AI 应用开发、Java 研发、复杂系统架构设计
+- **专注领域**: AI 应用开发开发、Java 研发、复杂系统架构设计
 
 ---
 
